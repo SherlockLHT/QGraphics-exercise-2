@@ -10,6 +10,7 @@
 #include <QtOpenGL>
 #include <QGraphicsItemGroup>
 #include <QKeyEvent>
+#include <QPixmap>
 
 class myView : public QGraphicsView
 {

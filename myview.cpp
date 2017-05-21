@@ -43,11 +43,18 @@ void myView::wheelEvent(QWheelEvent *event)
 void myView::mousePressEvent(QMouseEvent *event)
 {
     rotate(90); //视图顺时针旋转90度
+    QPixmap pixmap(400,400);    //必须指定大小
+    QPainter painter(&pixmap);
+    //render(&painter,QRectF(0,0,400,400),QRect(0,0,400,400));//打印视图指定区域内容
+    scene()->render(&painter,QRectF(0,0,400,400),QRect(0,0,400,400));//打印场景内容
+    pixmap.save("../save.png");
+
     QGraphicsView::mousePressEvent(event);//执行默认事件，可拖动
 }
 
 void myView::keyPressEvent(QKeyEvent *event)
 {
     items().at(2)->setPos(100,100);
+
     QGraphicsView::keyPressEvent(event);//执行默认事件处理
 }
