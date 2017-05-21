@@ -13,6 +13,8 @@ myView::myView(QWidget *parent):
     setScene(scene);
     setAlignment(Qt::AlignLeft | Qt::AlignTop);
     setDragMode(QGraphicsView::ScrollHandDrag);//手型拖动
+    QGLWidget* widget = new QGLWidget(this);
+    setViewport(widget);
 }
 
 void myView::wheelEvent(QWheelEvent *event)

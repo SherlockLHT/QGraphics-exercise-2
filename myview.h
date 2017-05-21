@@ -7,6 +7,7 @@
 #include <QWheelEvent>
 #include <QMouseEvent>
 #include <QWidget>
+#include <QtOpenGL>
 
 class myView : public QGraphicsView
 {

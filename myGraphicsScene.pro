@@ -20,3 +20,5 @@ HEADERS  += mainwindow.h \
     myview.h
 
 FORMS    += mainwindow.ui
+
+QT += opengl
