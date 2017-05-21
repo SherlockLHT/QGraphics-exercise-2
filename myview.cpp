@@ -48,8 +48,6 @@ void myView::mousePressEvent(QMouseEvent *event)
 
 void myView::keyPressEvent(QKeyEvent *event)
 {
-    qDebug()<<items();  //输出场景中所有图形项
-    items().at(0)->setPos(100,0);
-    items().at(1)->setPos(0,100);
+    items().at(2)->setPos(100,100);
     QGraphicsView::keyPressEvent(event);//执行默认事件处理
 }
