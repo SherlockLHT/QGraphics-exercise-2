@@ -6,12 +6,13 @@ myView::myView(QWidget *parent):
     resize(400,400);
     setBackgroundBrush(Qt::blue);
     QGraphicsScene* scene = new QGraphicsScene(this);
-    scene->setSceneRect(0,0,200,200);
+    scene->setSceneRect(0,0,800,800);
     QGraphicsRectItem* item = new QGraphicsRectItem(0,0,20,20);
     item->setBrush(Qt::red);
     scene->addItem(item);
     setScene(scene);
     setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    setDragMode(QGraphicsView::ScrollHandDrag);//手型拖动
 }
 
 void myView::wheelEvent(QWheelEvent *event)
@@ -29,4 +30,6 @@ void myView::wheelEvent(QWheelEvent *event)
 void myView::mousePressEvent(QMouseEvent *event)
 {
     rotate(90); //视图顺时针旋转90度
+    QGraphicsView::mousePressEvent(event);//执行默认事件，可拖动
 }
+
