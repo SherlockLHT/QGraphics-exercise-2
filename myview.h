@@ -8,6 +8,8 @@
 #include <QMouseEvent>
 #include <QWidget>
 #include <QtOpenGL>
+#include <QGraphicsItemGroup>
+#include <QKeyEvent>
 
 class myView : public QGraphicsView
 {
@@ -17,6 +19,7 @@ public:
 protected:
     void wheelEvent(QWheelEvent*);
     void mousePressEvent(QMouseEvent*);
+    void keyPressEvent(QKeyEvent*);
 };
 
 #endif // MYVIEW_H

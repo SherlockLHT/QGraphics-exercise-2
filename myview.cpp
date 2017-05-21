@@ -6,15 +6,26 @@ myView::myView(QWidget *parent):
     resize(400,400);
     setBackgroundBrush(Qt::blue);
     QGraphicsScene* scene = new QGraphicsScene(this);
-    scene->setSceneRect(0,0,800,800);
+    //scene->setSceneRect(0,0,800,800);
+
     QGraphicsRectItem* item = new QGraphicsRectItem(0,0,20,20);
     item->setBrush(Qt::red);
-    scene->addItem(item);
+    //scene->addItem(item);
+
+    QGraphicsRectItem* item_2 = new QGraphicsRectItem(0,0,20,20);
+    item_2->setBrush(Qt::green);
+    item->setPos(30,0);
+    scene->addItem(item_2);
+
+    QGraphicsItemGroup* group = new QGraphicsItemGroup;//新建图形项组
+    group->addToGroup(item);
+    group->addToGroup(item_2);
+
+    scene->addItem(group);
+
     setScene(scene);
-    setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    setDragMode(QGraphicsView::ScrollHandDrag);//手型拖动
-    QGLWidget* widget = new QGLWidget(this);
-    setViewport(widget);
+    qDebug()<<"ItemAt(10,0):"<<itemAt(10,0);
+    qDebug()<<"ItemAt(30,0):"<<itemAt(30,0);
 }
 
 void myView::wheelEvent(QWheelEvent *event)
@@ -35,3 +46,10 @@ void myView::mousePressEvent(QMouseEvent *event)
     QGraphicsView::mousePressEvent(event);//执行默认事件，可拖动
 }
 
+void myView::keyPressEvent(QKeyEvent *event)
+{
+    qDebug()<<items();  //输出场景中所有图形项
+    items().at(0)->setPos(100,0);
+    items().at(1)->setPos(0,100);
+    QGraphicsView::keyPressEvent(event);//执行默认事件处理
+}
