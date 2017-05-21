@@ -11,6 +11,7 @@ myView::myView(QWidget *parent):
     item->setBrush(Qt::red);
     scene->addItem(item);
     setScene(scene);
+    setAlignment(Qt::AlignLeft | Qt::AlignTop);
 }
 
 void myView::wheelEvent(QWheelEvent *event)
